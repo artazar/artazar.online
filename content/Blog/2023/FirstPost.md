@@ -17,7 +17,7 @@ Let me name a few:
 
 1 - A small one but my favorite, because it covers a many-years-old pain: once you copy some wrong text into the Terminal window, you hit ctrl+z to undo, so simple yet fantastic!
 
-![video](/warp-ctrl-z.mov)
+{{< youtube id="Nh9uq0x3N8c" autoplay="true" >}}
 
 2 - PasteBin like experience with sharing the outputs, because Warp treats a CLI command output as an object that you can manipulate and generate a link to it, example: [click](https://app.warp.dev/block/Vsy0PXZpdrWfglobYv64HI)
 
