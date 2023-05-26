@@ -1,6 +1,6 @@
 # Description
 
-A public personal website of [kazakov.xyz](https://kazakov.xyz) based on [Hugo](https://gohugo.io/) framework and [hugo-coder](https://github.com/luizdepra/hugo-coder) theme.
+A public personal website of [artazar.online](https://artazar.online) based on [Hugo](https://gohugo.io/) framework and [hugo-coder](https://github.com/luizdepra/hugo-coder) theme.
 
 This site is hosted on [Cloudflare Pages](https://pages.cloudflare.com/).
 

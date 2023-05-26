@@ -5,12 +5,20 @@ date = "2022-11-08T12:43:38+03:00"
 aliases = ["about", "about-me", "contact"]
 +++
 
-Hey fellas!
+Hey fellas! 🥁🥁🥁
 
 Welcome to my personal space, where I am going to post my engineer findings that do not fit into larger portals like Medium / dev.to / Hackernoon / Habr.
 
 I have been building DevOps processes and tooling since 2019 and don't have plans to stop.
+
 I have a deep passion in Kubernetes and the whole Cloud Native community.
+
+Very brief description of projects I was a part of:
+
+1) [In progress] Innovative music streaming app with crypto/metaverse/social patterns.
+2) A medical lab performing molecular diagnostics of synthetic oligonucleotides.
+3) Sports betting platform that handles near-real-time odds updates from live events.
+4) Russian School of Mathematics (based in the US) with offline and virtual classroom activities.
 
 My most valued certifications:
 
