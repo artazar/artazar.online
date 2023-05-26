@@ -42,16 +42,22 @@ weight = 1
 url = "https://github.com/artazar/"
 target = "_blank"
 [[params.social]]
-name = "Instagram"
-icon = "fa fa-instagram fa-2x"
-weight = 3
-url = "https://www.instagram.com/artymesh/"
-target = "_blank"
-[[params.social]]
 name = "Linkedin"
 icon = "fa fa-linkedin fa-2x"
 weight = 5
 url = "https://www.linkedin.com/in/artazar/"
+target = "_blank"
+[[params.social]]
+name = "Telegram"
+icon = "fa fa-telegram fa-2x"
+weight = 6
+url = "//t.me/artymesh"
+target = "_blank"
+[[params.social]]
+name = "Instagram"
+icon = "fa fa-instagram fa-2x"
+weight = 3
+url = "https://www.instagram.com/artymesh/"
 target = "_blank"
 [[params.social]]
 name = "artazar@gmail.com"
