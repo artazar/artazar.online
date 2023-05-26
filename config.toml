@@ -1,0 +1,73 @@
+baseurl = "https://artazar.pages.dev"
+title = "DevOps & Rock'N'Roll"
+theme = "hugo-coder-forked"
+languagecode = "en"
+defaultcontentlanguage = "en"
+
+paginate = 20
+
+pygmentsstyle = "bw"
+pygmentscodefences = true
+pygmentscodefencesguesssyntax = true
+
+disqusShortname = "artazar"
+enableGitInfo = true
+
+[params]
+author = "Arty Mesh"
+info = ["DevOps | Cloud Architect | With Rock'N'Roll in my blood"]
+description = "Arty Mesh's personal page"
+keywords = "blog,businesscard,personal,artazar,artymesh,devops,kubernetes,k8s"
+gravatar = "artazar@gmail.com"
+
+since = 2010
+enableTwemoji = true
+colorScheme = "auto"
+hidecolorschemetoggle = false
+# Git Commit in Footer, uncomment the line below to enable it
+commit = "https://github.com/artazar/artazar.online/tree/"
+powered_by = true
+# Series see also post count
+maxSeeAlsoItems = 5
+
+[taxonomies]
+tag = "tags"
+author = "authors"
+
+# Social links
+[[params.social]]
+name = "Github"
+icon = "fa fa-github fa-2x"
+weight = 1
+url = "https://github.com/artazar/"
+target = "_blank"
+[[params.social]]
+name = "Instagram"
+icon = "fa fa-instagram fa-2x"
+weight = 3
+url = "https://www.instagram.com/artymesh/"
+target = "_blank"
+[[params.social]]
+name = "Linkedin"
+icon = "fa fa-linkedin fa-2x"
+weight = 5
+url = "https://www.linkedin.com/in/artazar/"
+target = "_blank"
+[[params.social]]
+name = "artazar@gmail.com"
+icon = "fa fa-envelope fa-2x"
+weight = 6
+url = "mailto:artazar@gmail.com"
+target = "_blank"
+
+# Menu links
+[[languages.en.menu.main]]
+name = "Home"
+weight = 1
+url  = "/"
+[[languages.en.menu.main]]
+name = "About"
+weight = 2
+url = "about/"
+
+
