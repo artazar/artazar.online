@@ -15,12 +15,12 @@ enableGitInfo = true
 
 [params]
 author = "Arty Mesh"
-info = ["DevOps | Cloud Architect | With Rock'N'Roll in my blood"]
+info = ["DevOps | Cloud Architect | Rock'n'roll in my veins"]
 description = "Arty Mesh's personal page"
 keywords = "blog,businesscard,personal,artazar,artymesh,devops,kubernetes,k8s"
 gravatar = "artazar@gmail.com"
 
-since = 2010
+since = 2022
 enableTwemoji = true
 colorScheme = "auto"
 hidecolorschemetoggle = false
