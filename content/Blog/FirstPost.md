@@ -1,7 +1,6 @@
 ---
 title: "My First Post: Warp the Terminal"
 date: 2023-05-26T04:08:30Z
-draft: true
 slug: ""
 ---
 
