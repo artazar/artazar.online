@@ -15,12 +15,12 @@ enableGitInfo = true
 
 [params]
 author = "Arty Mesh"
-info = ["DevOps | Cloud Architect | Rock'n'roll in my veins"]
-description = "Arty Mesh's personal page"
+info = ["DevOps | Cloud Architect | Rock'n'Roll in my veins"]
+description = "Arty Mesh personal page"
 keywords = "blog,businesscard,personal,artazar,artymesh,devops,kubernetes,k8s"
 gravatar = "artazar@gmail.com"
 
-since = 2022
+since = 2023
 enableTwemoji = true
 colorScheme = "auto"
 hidecolorschemetoggle = false
@@ -33,9 +33,6 @@ maxSeeAlsoItems = 5
 [taxonomies]
 tag = "tags"
 author = "authors"
-
-[markup.highlight]
-style = "nord"
 
 # Social links
 [[params.social]]
