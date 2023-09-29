@@ -8,7 +8,7 @@ I have been using [Azure Pipelines](https://azure.microsoft.com/en-us/products/d
 
 This post will be a guide on how to maintain a set of YAML templates for CI pipelines and validate changes to them. The set of YAML templates is commonly placed outside of application repos and are referenced by smaller portions of YAML on the corresponding app repos.
 
-![image](/static/02-azd-validate-3.jpg)
+![image](/02-azd-validate-3.jpg)
 
 So when a great amount of application repositories use the same central CI templates repository, it is pretty important to have all its changes validated on PR level.
 
