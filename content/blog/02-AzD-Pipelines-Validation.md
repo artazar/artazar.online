@@ -241,7 +241,7 @@ resources:
     ref: ${{ replace(variables['System.PullRequest.SourceBranch'], 'refs/heads/', '') }}
 ```
 
-So we utilize the power of Azure Pipelines expressions that can calculate the "ref" value right on the fly out of the PR source branch.
+So we utilize the power of Azure Pipelines expressions that can calculate the "ref" value right on the fly out of the PR source branch. At this point it is important to note: the demo apps are also located on the same repository, where YAML templates live, otherwise this trick won't work. But there's nothing wrong in keeping demo apps on the same repo, where we want to do the validation, so it makes perfect sense.
 
 (Cutting out 'refs/heads/' part is required, I know it looks a bit ugly, but couldn't solve this any other way.)
 
