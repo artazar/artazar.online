@@ -8,7 +8,7 @@ I have been using [Azure Pipelines](https://azure.microsoft.com/en-us/products/d
 
 This post will be a guide on how to maintain a set of YAML templates for CI pipelines and validate changes to them. The set of YAML templates is commonly placed outside of application repos and are referenced by smaller portions of YAML on the corresponding app repos.
 
-![image](/static/02 - azd-validate-3.jpg)
+![image](/static/02-azd-validate-3.jpg)
 
 So when a great amount of application repositories use the same central CI templates repository, it is pretty important to have all its changes validated on PR level.
 
@@ -76,11 +76,11 @@ So watch the hands: we fill in the `refName` of the "templates" repository with 
 
 Using PipelinesClient() of the API, we are able to pass this customization to a preview of a pipeline. Notice that `preview()` is the special function that does exactly what we need: builds full YAML out of all the parts that get combined and prints it out to the output, where you can actually see all steps together:
 
-![image](/02 - azd-validate-1.png)
+![image](/02-azd-validate-1.png)
 
 And, of course, if there are preview errors rendering this document - you get full reasonable error output to capture what is wrong:
 
-![image](/02 - azd-validate-2.png)
+![image](/02-azd-validate-2.png)
 
 So now our validation sequence can look this way: 
 
