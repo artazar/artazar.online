@@ -241,19 +241,33 @@ resources:
     ref: ${{ replace(variables['System.PullRequest.SourceBranch'], 'refs/heads/', '') }}
 ```
 
+So we utilize the power of Azure Pipelines expressions that can calculate the "ref" value right on the fly out of the PR source branch.
+
 (Cutting out 'refs/heads/' part is required, I know it looks a bit ugly, but couldn't solve this any other way.)
 
 So now our validation sequence is composed of: 
 
-1. We make a change to a repository with YAML templates in a branch;
-2. We raise a PR to our 'main' branch;
+1. We make a change to a repository with YAML templates;
+2. We raise a PR to our 'main' stable branch;
 3. A pipeline gets triggered that executes two important steps;
 4. It makes a YAML preview to detect any syntax issues;
 5. It triggers a new run of a demo app pipeline to detect any logical issues of the pipeline itself;
 6. It triggers a new run of a demo app pipeline template with reason=pullRequest to initate the PR pipelines check.
 
-Being able to validate Azure Pipelines YAML, to check the branch builds and PR builds makes this whole procedure a complete and utmost verification of the changes done to CI templates. I would say that executing this full procedure is pretty heavy, because for 2 demo apps it is going to consume 3 runners for the whole period (2 app-specific pipelines for each app + 1 controlling PR pipeline). But it is a great helper when introducing massive changes to pipeline templates, and you need verification that these changes will not introduce any build failuresx.
+Here's the flow depicted as diagram:
 
-I hope this material comes useful to community, as, pursuing this goal, I have not found a single tutorial to do that.
+![image](/02-pipeline-diagram.jpg)
+
+Being able to validate Azure Pipelines YAML, to check the branch builds and PR builds makes this whole procedure a complete and utmost verification of the changes done to CI templates. I would say that executing this full procedure is pretty heavy and takes some time to complete. But it is a great helper when introducing massive changes to pipeline templates, where you need verification that these changes will not result into any build failures.
+
+Here's the source code that demonstrates this approach:
+
+1. [validate-templates.yaml](https://github.com/artazar/azure-pipeline-templates/blob/main/pipelines/validate-templates.yaml) -- full definition of the validating pipeline
+2. [previewBuildYaml.py](https://github.com/artazar/azure-pipeline-templates/blob/main/scripts/previewBuildYaml.py) -- the script that executes Preview API
+3. [runAndWaitForBuildCompletionCustomParameters](https://github.com/artazar/azure-pipeline-templates/blob/main/scripts/runAndWaitForBuildCompletionCustomParameters.py) -- the script that runs a Pipeline with customized parameters
+4. [runAndWaitForBuildCompletionReasonPR](https://github.com/artazar/azure-pipeline-templates/blob/main/scripts/runAndWaitForBuildCompletionReasonPR.py) -- the script that runs a Pipeline with Reason=PR
+5. [azure-pipelines.yaml](https://github.com/artazar/azure-pipeline-templates/blob/main/apps/react-demo/azure-pipelines.yaml) - "entrypoint" yaml file for a Spring Boot sample app
+
+I hope this material comes useful to community, as, pursuing this goal, I have not found a single tutorial to implement this full flow.
 
 Cheers!
