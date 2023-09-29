@@ -6,7 +6,7 @@ slug: ""
 
 About a month ago I installed [Warp](https://www.warp.dev/) on my workstation to try it out. Now I cannot go back to iTerm2 anymore. It's a trap.
 
-![image](/warp-image.jpg)
+![image](/01 - warp-image.jpg)
 
 Now you claim everywhere you're a DevOps engineer, because "Linux Administrator" has become something old-school. But call it what you like, there's one common thing - you're the Terminal Guy. That means you use the Terminal and CLI set for all your tasks every day. Being a control freak like me, CLI has never been superseded by any fanciest UI tools.
 
