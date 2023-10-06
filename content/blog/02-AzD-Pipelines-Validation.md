@@ -33,7 +33,7 @@ But there is a solution, another way to go, and I will describe it now.
 
 With Azure DevOps API, you can trigger a preview run of an existing pipeline with overriding its run parameters. Inside that "run parameters" structure you can literally provide any possible configuration of a pipeline. This includes the "resources" structure, which we use to point to the external templates repository:
 
-```
+```python
     run_client = PipelinesClient(
         base_url=ORGANIZATION_URL, 
         creds=credentials
@@ -48,7 +48,7 @@ With Azure DevOps API, you can trigger a preview run of an existing pipeline wit
 
 Where input_parameters are prematurely composed this way:
 
-```
+```yaml
 - task: Bash@3
   displayName: Prepare params.json
   inputs:
@@ -94,7 +94,7 @@ You may generate correct YAML syntax that will form a legitimate pipeline accord
 
 The next level is to run the most frequently used CI jobs for minimal sample apps of the used stack. In my example, I am going to show 2 kinds of applications: Spring Boot and React App. Let's form a matrix of those with their sample pipeline IDs:
 
-```
+```yaml
 variables:
   - name: matrix
     value: |
@@ -110,7 +110,7 @@ variables:
 
 The matrix here helps us create exactly the same jobs for two different apps:
 
-```
+```yaml
 - job: CheckBuilds
   strategy:
     matrix: $[ variables.matrix ]
@@ -119,7 +119,7 @@ The matrix here helps us create exactly the same jobs for two different apps:
 
 Each of these build definitions points to the corresponding template on the templates repository, i.e. we use `extends` for that purpose, passing the required parameters. Here's an example of what's located on a React App repository:
 
-```
+```yaml
 extends:
   template: pipelines/nodejs.yaml@templates
   parameters:
@@ -131,7 +131,7 @@ extends:
 
 and "templates" is defined inside its resources section:
 
-```
+```yaml
 resources:
   repositories:
   # Repository with CI templates
@@ -148,7 +148,7 @@ With the help of the same trick with params.json, it is possible to initiate a r
 This works absolutely fine, except for the fact that there's no "wait" parameter inside the API (bummer!). So I had to add my own piece of "wait" code to examine the pipeline run results:
 
 
-```
+```python
     print("Queuing the build...\n")
     try:
         pipeline_run = run_client.run_pipeline(
@@ -211,7 +211,7 @@ Fortunately, there's a trick to do that too! But it comes with a tax to pay.
 
 This is possible if we switch to BuildClient() instead of PipelinesClient():
 
-```
+```python
     build_client = BuildClient(
         base_url=ORGANIZATION_URL,
         creds=credentials
@@ -230,7 +230,7 @@ Sadly, the BuildClient() doesn't include injecting custom parameters to pass our
 True engineers do not give up!
 Without any extra explanations, here's what helps in this case:
 
-```
+```yaml
 resources:
   repositories:
   # Repository with CI templates
