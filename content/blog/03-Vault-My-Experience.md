@@ -19,10 +19,12 @@ The last point is of a very special interest, since it's the only webhook out th
 The authors have come up with an idea of intercepting the entrypoint of the containers defined in pod spec, and injecting their binary into it, which fetches the secrets directly from Vault and launches the original entrypoint with these secrets put into *its* environment only. So what does it give us:
 
 1. Secrets stored inside Kubernetes are out of the question, we don't have anything in plain base64 anymore, and we cannot see secret values in pod specifications as well
-2. We don't see the secret values inside container's shell running `env`, we'll only see the magic "vault:/path/to/secret" URI. Of course secrets are not magically appear out of nowhere, and the content of `/proc/1/environ` will reveal them to you, but only if you know where to look. 
+2. We don't see the secret values inside container's shell running `env`, we'll only see the magic "vault:/path/to/secret" URI. Of course secrets do not magically appear out of nowhere, and the content of `/proc/1/environ` will reveal them to you, but only if you know where to look. 
 3. The application we launch in pod is still unaware of Vault existence, it directly consumes what's given by the Vault client
 
-I find such approach very nice and robust, and I won't dive more into it. There were also some difficulties that this caused for me.
+I find such approach very nice and robust, and I won't dive more into it, because it's been well explained by the [original authors](https://banzaicloud.com/blog/inject-secrets-into-pods-vault-revisited/).
+
+But there were also some difficulties that this caused for me.
 
 ### Or not to inject
 
