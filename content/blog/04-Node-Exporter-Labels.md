@@ -1,5 +1,5 @@
 ---
-title: "Environment labels for node-exporter metrics with kube-prometheus-stack and Karpenter"
+title: "Node labels for Node Exporter alerts"
 date: 2026-03-04T00:08:30Z
 slug: ""
 ---
