@@ -79,13 +79,13 @@ The `context` block performs an API call to fetch the labels of the node where t
 > **Note:** Kyverno only mutates pods at admission time, so existing node-exporter pods won't be affected retroactively. Once the policy is applied, you need to restart the node-exporter DaemonSet to trigger pod recreation and get the labels attached:
 >
 > ```sh
-> kubectl rollout restart daemonset -n monitoring prometheus-node-exporter
+> kubectl rollout restart daemonset -n observability prometheus-node-exporter
 > ```
 
 Once the policy is in place, verify the labels landed correctly:
 
 ```sh
-kubectl get pods -n monitoring -l app.kubernetes.io/name=prometheus-node-exporter \
+kubectl get pods -n observability -l app.kubernetes.io/name=prometheus-node-exporter \
   -o jsonpath='{range .items[*]}{.metadata.name}{"\t"}{.metadata.labels.env}{"\n"}{end}'
 ```
 
