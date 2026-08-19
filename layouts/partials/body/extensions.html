@@ -1,0 +1,8 @@
+{{ with resources.Get "js/enhance.js" }}
+  {{ if hugo.IsServer }}
+    <script src="{{ .RelPermalink }}" defer></script>
+  {{ else }}
+    {{ $js := . | minify | fingerprint }}
+    <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous" defer></script>
+  {{ end }}
+{{ end }}

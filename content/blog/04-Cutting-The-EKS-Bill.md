@@ -1,6 +1,8 @@
 ---
 title: "Cutting the EKS bill: what actually moved the needle"
 date: 2025-07-15T00:08:30Z
+description: "What actually moved the needle on an EKS bill, ranked by return per hour of effort."
+tags: ["aws", "eks", "cost-optimization", "karpenter"]
 slug: ""
 ---
 

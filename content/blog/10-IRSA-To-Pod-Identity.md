@@ -1,6 +1,8 @@
 ---
 title: "IRSA to Pod Identity: notes from the migration"
 date: 2026-06-02T00:08:30Z
+description: "Migration notes, the annotation that becomes a lie, and the host port 80 conflict that took down ingress."
+tags: ["aws", "eks", "iam", "kubernetes", "security"]
 slug: ""
 ---
 

@@ -1,6 +1,8 @@
 ---
 title: "A FluxCD repo layout that survives forty applications"
 date: 2026-05-05T00:08:30Z
+description: "A GitOps repository structure that stays navigable past forty applications and several clusters."
+tags: ["fluxcd", "gitops", "kubernetes", "kustomize"]
 slug: ""
 ---
 
@@ -14,7 +16,7 @@ This post is the layout I settled on after doing it wrong twice.
 
 That gives three top-level trees:
 
-```
+```text
 ├── apps/
 │   ├── base/
 │   │   ├── grafana/

@@ -1,6 +1,8 @@
 ---
 title: "EKS Access Entries: one ARN, one cluster, no sharing"
 date: 2026-04-21T00:08:30Z
+description: "Access entries are scoped per cluster, not shared. Three ways to collide with one, and how to dedupe in Terraform."
+tags: ["aws", "eks", "terraform", "iam", "security"]
 slug: ""
 ---
 
@@ -8,7 +10,7 @@ EKS Access Entries replaced the `aws-auth` ConfigMap and made cluster authorizat
 
 The error that sent me down this road:
 
-```
+```text
 Error: creating EKS Access Entry (test-spain-001:arn:aws:iam::123456789012:role/PlatformAdmin):
 ResourceInUseException: The specified access entry resource is already in use
 on this cluster.

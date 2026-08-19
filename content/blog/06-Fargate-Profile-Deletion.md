@@ -1,12 +1,14 @@
 ---
 title: "Fargate profiles and the art of waiting your turn"
 date: 2026-04-07T00:08:30Z
+description: "EKS allows one Fargate profile mutation at a time. Here's why your destroy fails and how depends_on fixes it."
+tags: ["aws", "eks", "terraform", "fargate"]
 slug: ""
 ---
 
 There is a special kind of Terraform error that only shows up when you destroy things. Your `apply` has been green for months, everyone is happy, and then one day you run a `terragrunt destroy` on a test cluster and get this:
 
-```
+```text
 Error: deleting EKS Fargate Profile (test-spain-001:test-spain-001-karpenter-2a):
 operation error EKS: DeleteFargateProfile, https response error StatusCode: 409,
 ResourceInUseException: Cannot delete Fargate profile
@@ -98,7 +100,7 @@ One profile, all subnets, no ordering problem at all — Fargate will spread the
 
 The same destroy run will sometimes hand you a sibling error on the way back up:
 
-```
+```text
 Error: creating IAM Policy (KarpenterIRSA-test-spain-001-...):
 StatusCode: 409, EntityAlreadyExists
 ```

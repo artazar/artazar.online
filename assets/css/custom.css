@@ -1,0 +1,316 @@
+/* ------------------------------------------------------------------
+   Custom overrides on top of hugo-coder-forked.
+   Kept in static/css so the theme fork stays clean and updatable.
+   ------------------------------------------------------------------ */
+
+:root {
+  --prose-measure: 72rem;
+  --rule-color: #e0e0e0;
+  --rule-color-strong: #bdbdbd;
+  --muted-fg: #5f6368;
+  --code-label-fg: #6b7280;
+  --note-bg: #2196f30d;
+  --note-border: #1e88e5;
+  --note-fg: inherit;
+  --table-header-bg: #f1f3f4;
+  --table-stripe: #00000005;
+  --tag-bg: #eceff1;
+  --tag-fg: #37474f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --rule-color: #4f4f4f;
+    --rule-color-strong: #6b6b6b;
+    --muted-fg: #9aa0a6;
+    --code-label-fg: #9aa0a6;
+    --note-bg: #42a5f514;
+    --note-border: #42a5f5;
+    --table-header-bg: #2c2c2c;
+    --table-stripe: #ffffff08;
+    --tag-bg: #3a3a3a;
+    --tag-fg: #dadada;
+  }
+}
+
+body.colorscheme-dark {
+  --rule-color: #4f4f4f;
+  --rule-color-strong: #6b6b6b;
+  --muted-fg: #9aa0a6;
+  --code-label-fg: #9aa0a6;
+  --note-bg: #42a5f514;
+  --note-border: #42a5f5;
+  --table-header-bg: #2c2c2c;
+  --table-stripe: #ffffff08;
+  --tag-bg: #3a3a3a;
+  --tag-fg: #dadada;
+}
+
+body.colorscheme-light {
+  --rule-color: #e0e0e0;
+  --rule-color-strong: #bdbdbd;
+  --muted-fg: #5f6368;
+  --code-label-fg: #6b7280;
+  --note-bg: #2196f30d;
+  --note-border: #1e88e5;
+  --table-header-bg: #f1f3f4;
+  --table-stripe: #00000005;
+  --tag-bg: #eceff1;
+  --tag-fg: #37474f;
+}
+
+/* --- 1. Kill justified text -------------------------------------- */
+/* Justification + inline <code> produces whitespace rivers, because
+   monospace fragments refuse to stretch with the surrounding words. */
+.content article p,
+.content .post-content p,
+.content .post-content li {
+  text-align: left;
+  hyphens: manual;
+}
+
+/* --- 2. Readable measure for prose ------------------------------- */
+/* Prose narrows to ~72rem; code, tables and images stay full width. */
+.content .post-content > p,
+.content .post-content > ul,
+.content .post-content > ol,
+.content .post-content > blockquote,
+.content .post-content > h1,
+.content .post-content > h2,
+.content .post-content > h3,
+.content .post-content > h4,
+.content .post-content > h5,
+.content .post-content > h6 {
+  max-width: var(--prose-measure);
+}
+
+.content .post-content > .highlight,
+.content .post-content > pre,
+.content .post-content > table,
+.content .post-content > figure,
+.content .post-content > .table-wrap {
+  max-width: 100%;
+}
+
+/* --- 3. Tables: rules, not spreadsheet grids ---------------------- */
+.content .post-content table {
+  width: 100%;
+  margin: 2.4rem 0;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.content .post-content table th,
+.content .post-content table td {
+  border: 0;
+  border-bottom: 1px solid var(--rule-color);
+  padding: 0.9rem 1.2rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.content .post-content table thead th {
+  background-color: var(--table-header-bg);
+  border-bottom: 2px solid var(--rule-color-strong);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.content .post-content table tbody tr:nth-child(even) {
+  background-color: var(--table-stripe);
+}
+
+.content .post-content table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* Numeric-looking columns read better right-aligned. */
+.content .post-content table td.num,
+.content .post-content table th.num {
+  text-align: right;
+}
+
+/* Wide tables scroll inside their own box instead of the page. */
+.table-wrap {
+  overflow-x: auto;
+  margin: 2.4rem 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-wrap > table {
+  margin: 0;
+}
+
+/* --- 4. Code blocks: language label + copy button ----------------- */
+.content .post-content .highlight {
+  position: relative;
+  margin: 2.4rem 0;
+}
+
+.content .post-content .highlight::before {
+  content: attr(data-lang);
+  position: absolute;
+  top: 0.5rem;
+  right: 5.6rem;
+  font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--code-label-fg);
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.content .post-content .highlight[data-lang=""]::before,
+.content .post-content .highlight:not([data-lang])::before {
+  content: none;
+}
+
+.copy-code {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.6rem;
+  z-index: 2;
+  padding: 0.3rem 0.8rem;
+  font-family: inherit;
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  color: var(--code-label-fg);
+  background: transparent;
+  border: 1px solid var(--rule-color);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s ease-in, color 0.15s ease-in;
+}
+
+.content .post-content .highlight:hover .copy-code,
+.copy-code:focus {
+  opacity: 1;
+}
+
+.copy-code:hover {
+  color: inherit;
+  border-color: var(--rule-color-strong);
+}
+
+.copy-code[data-copied="true"] {
+  opacity: 1;
+  color: #2e7d32;
+  border-color: #2e7d32;
+}
+
+/* Touch devices have no hover — keep the button visible. */
+@media (hover: none) {
+  .copy-code { opacity: 1; }
+}
+
+/* --- 5. Blockquote asides that read as callouts ------------------- */
+.content .post-content blockquote {
+  margin: 2.4rem 0;
+  padding: 1.2rem 1.8rem;
+  max-width: var(--prose-measure);
+  font-style: normal;
+  line-height: 2.8rem;
+  background-color: var(--note-bg);
+  border-left: 3px solid var(--note-border);
+  border-radius: 0 0.6rem 0.6rem 0;
+}
+
+.content .post-content blockquote > p:first-child { margin-top: 0; }
+.content .post-content blockquote > p:last-child { margin-bottom: 0; }
+
+.content .post-content blockquote code {
+  font-style: normal;
+}
+
+/* --- 7. Post list: descriptions ---------------------------------- */
+.list ul:not(.pagination) li {
+  margin-bottom: 2.4rem;
+}
+
+.list .post-summary {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 1.5rem;
+  line-height: 2.2rem;
+  color: var(--muted-fg);
+  max-width: 62rem;
+}
+
+@media only screen and (min-width: 768.1px) {
+  .list ul:not(.pagination) li {
+    display: flex;
+    align-items: baseline;
+  }
+
+  .list ul:not(.pagination) li .entry {
+    flex: 2;
+  }
+}
+
+.list .entry-meta {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 1.3rem;
+  color: var(--muted-fg);
+}
+
+/* --- 6. Tags ------------------------------------------------------ */
+.content .post-meta .tags .tag,
+.list .entry-tags .tag {
+  display: inline-block;
+  padding: 0.2rem 0.8rem;
+  margin-right: 0.4rem;
+  font-size: 1.3rem;
+  line-height: 2rem;
+  background-color: var(--tag-bg);
+  border-radius: 0.6rem;
+}
+
+.content .post-meta .tags .tag a,
+.list .entry-tags .tag a {
+  color: var(--tag-fg);
+}
+
+/* --- 8. Prev/next post navigation -------------------------------- */
+.post-nav {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+  margin: 4rem 0 0;
+  padding-top: 2.4rem;
+  border-top: 1px solid var(--rule-color);
+  font-size: 1.6rem;
+}
+
+.post-nav a {
+  flex: 1;
+  line-height: 2.4rem;
+}
+
+.post-nav .post-nav-next {
+  text-align: right;
+}
+
+.post-nav .post-nav-label {
+  display: block;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted-fg);
+}
+
+@media only screen and (max-width: 768px) {
+  .post-nav {
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+
+  .post-nav .post-nav-next {
+    text-align: left;
+  }
+}

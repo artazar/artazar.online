@@ -1,6 +1,8 @@
 ---
 title: "Yet another Vault story"
 date: 2023-10-06T00:08:30Z
+description: "Running Hashicorp Vault the GitOps way with Bank-Vaults: secret injection, probes, and Raft snapshots."
+tags: ["vault", "security", "kubernetes", "gitops"]
 slug: ""
 ---
 

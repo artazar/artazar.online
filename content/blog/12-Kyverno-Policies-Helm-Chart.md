@@ -1,6 +1,8 @@
 ---
 title: "Wrapping Kyverno policies into a chart you can actually tune"
 date: 2026-07-07T00:08:30Z
+description: "Turning a pile of static ClusterPolicy manifests into a Helm chart with three tiers of configurability."
+tags: ["kyverno", "helm", "kubernetes", "security", "gitops"]
 slug: ""
 ---
 
@@ -12,7 +14,7 @@ So I wrapped the lot in a Helm chart. Every policy is a template, every knob is 
 
 ### The shape of it
 
-```
+```text
 default-kyverno-cluster-policies/
 ├── Chart.yaml
 ├── values.yaml

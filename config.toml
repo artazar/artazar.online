@@ -4,14 +4,21 @@ theme = "hugo-coder-forked"
 languagecode = "en"
 defaultcontentlanguage = "en"
 
-paginate = 20
-
-pygmentsstyle = "bw"
 pygmentscodefences = true
 pygmentscodefencesguesssyntax = true
 
-disqusShortname = "artazar"
+# Disqus loads third-party tracking JS on every post. Re-enable by
+# uncommenting if you want comments back.
+# disqusShortname = "artazar"
 enableGitInfo = true
+
+[pagination]
+pagerSize = 20
+
+[markup.highlight]
+noClasses = false
+lineNumbersInTable = false
+tabWidth = 2
 
 [params]
 author = "Arty Mesh"
@@ -22,6 +29,7 @@ gravatar = "artazar@gmail.com"
 
 since = 2023
 enableTwemoji = true
+customCSS = ["css/syntax.css", "css/custom.css"]
 colorScheme = "auto"
 hidecolorschemetoggle = false
 # Git Commit in Footer, uncomment the line below to enable it

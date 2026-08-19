@@ -1,6 +1,8 @@
 ---
 title: "Azure Pipelines YAML validation: full throttle"
 date: 2023-09-29T00:08:30Z
+description: "Validating a shared Azure Pipelines YAML template repo on every PR, using the PreviewRun API."
+tags: ["azure-devops", "ci-cd", "yaml", "automation"]
 slug: ""
 ---
 
@@ -20,7 +22,7 @@ First of all, there are a number of tools that help with validating Azure Pipeli
 
 These are pretty nice tools, all of them are based on the available "Run Pipeline" API with an ability to provide custom pipeline definition. But they all hit an important obstacle: they work only if you can provide a single full YAML document to validate:
 
-```
+```text
 $Body = @{
   "PreviewRun"   = "true"
   "YamlOverride" = <INSERT_YAML>  <----- you have to provide this!

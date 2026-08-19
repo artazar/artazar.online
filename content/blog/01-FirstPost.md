@@ -1,6 +1,8 @@
 ---
 title: "My First Post: Warp the Terminal"
 date: 2023-05-26T04:08:30Z
+description: "Why Warp replaced iTerm2 on my workstation, and the features that made it stick."
+tags: ["tools", "terminal", "productivity"]
 slug: ""
 ---
 

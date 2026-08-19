@@ -1,6 +1,8 @@
 ---
 title: "Node labels for Node Exporter alerts"
 date: 2026-03-04T00:08:30Z
+description: "Threading an env label from a Karpenter NodePool through Kyverno into Prometheus alerts."
+tags: ["kubernetes", "prometheus", "kyverno", "karpenter", "observability"]
 slug: ""
 ---
 

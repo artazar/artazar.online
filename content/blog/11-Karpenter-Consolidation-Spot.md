@@ -1,6 +1,8 @@
 ---
 title: "Karpenter consolidation without the pager fatigue"
 date: 2026-06-16T00:08:30Z
+description: "Tuning consolidation and spot interruption handling so the alerting channel stays worth reading."
+tags: ["karpenter", "aws", "eks", "spot", "cost-optimization"]
 slug: ""
 ---
 

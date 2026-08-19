@@ -1,6 +1,8 @@
 ---
 title: "Letting Claude loose on an AWS account with Prowler"
 date: 2026-08-11T00:08:30Z
+description: "Running Prowler across an AWS account with an agent, a read-only role, and a bastion — then triaging 1,684 findings."
+tags: ["aws", "security", "prowler", "ai", "automation"]
 slug: ""
 ---
 
@@ -70,7 +72,7 @@ The retries mattered more than I expected. A full-account scan is ~5,000 checks 
 
 Final numbers from the run:
 
-```
+```text
 Total checks evaluated   5,116
 PASS                     3,429 (67%)
 FAIL                     1,684 (33%)

@@ -1,6 +1,8 @@
 ---
 title: "Terragrunt: deleting the boilerplate you were told to write"
 date: 2026-05-19T00:08:30Z
+description: "Hoisting version pins, generating providers, and deriving config from paths to shrink leaf units."
+tags: ["terragrunt", "terraform", "iac", "aws"]
 slug: ""
 ---
 
