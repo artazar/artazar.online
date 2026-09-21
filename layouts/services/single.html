@@ -1,0 +1,41 @@
+{{ define "title" }}
+  {{ .Title }} · {{ .Site.Title }}
+{{ end }}
+{{ define "content" }}
+  <section class="container services">
+    <article>
+      <header class="services-header">
+        <h1 class="title">{{ .Title }}</h1>
+        {{ with .Params.booking_url }}
+          <a class="contact-cta contact-cta-small" href="{{ . }}" target="_blank" rel="noopener">
+            Book a call
+          </a>
+        {{ end }}
+      </header>
+
+      {{/* Grid: prose in column one, portrait in its own column two, so the
+           image sits outside the text flow and displaces nothing. */}}
+      <div class="services-body">
+        <div class="post-content services-content">
+          {{ .Content }}
+        </div>
+
+        {{ with .Params.photo }}
+          {{ with resources.Get . }}
+            {{ $small := .Resize "360x webp q85" }}
+            {{ $large := .Resize "720x webp q85" }}
+            <figure class="services-photo">
+              <img src="{{ $small.RelPermalink }}"
+                   srcset="{{ $small.RelPermalink }} 1x, {{ $large.RelPermalink }} 2x"
+                   width="{{ $small.Width }}" height="{{ $small.Height }}"
+                   alt="{{ $.Site.Params.author }}, cloud and platform engineer"
+                   loading="eager" decoding="async">
+            </figure>
+          {{ end }}
+        {{ end }}
+      </div>
+
+      {{ partial "services/contact.html" . }}
+    </article>
+  </section>
+{{ end }}

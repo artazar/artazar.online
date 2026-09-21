@@ -1,0 +1,42 @@
+{{/* Contact block: booking-first, with direct channels as fallback.
+     All targets come from the page's front matter so there are no
+     hardcoded URLs in the template. */}}
+{{ $booking := .Params.booking_url }}
+{{ $email := .Params.contact_email }}
+{{ $telegram := .Params.telegram_url }}
+{{ $linkedin := .Params.linkedin_url }}
+
+<section class="contact-block" id="contact">
+  {{ with $booking }}
+    <a class="contact-cta" href="{{ . }}" target="_blank" rel="noopener">
+      Book a free 30-minute call
+    </a>
+  {{ end }}
+
+  <ul class="contact-channels">
+    {{ with $email }}
+      <li>
+        <i class="fa fa-envelope" aria-hidden="true"></i>
+        <a href="mailto:{{ . }}?subject=Cloud%20engineering%20enquiry">{{ . }}</a>
+      </li>
+    {{ end }}
+    {{ with $telegram }}
+      <li>
+        <i class="fa fa-telegram" aria-hidden="true"></i>
+        <a href="{{ . }}" target="_blank" rel="noopener">Telegram</a>
+      </li>
+    {{ end }}
+    {{ with $linkedin }}
+      <li>
+        <i class="fa fa-linkedin" aria-hidden="true"></i>
+        <a href="{{ . }}" target="_blank" rel="noopener">LinkedIn</a>
+      </li>
+    {{ end }}
+  </ul>
+
+  <p class="contact-note">
+    Prefer written detail first? Send a couple of paragraphs about your setup by
+    email and I'll reply with what I'd look at, whether or not we end up working
+    together.
+  </p>
+</section>

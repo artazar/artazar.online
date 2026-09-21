@@ -314,3 +314,209 @@ body.colorscheme-light {
     text-align: left;
   }
 }
+
+/* ------------------------------------------------------------------
+   Services / proposal page
+   ------------------------------------------------------------------ */
+
+/* Measure is set by the grid column, not here — see .services-body. */
+
+/* Section rhythm: h2 opens a topic, h3 an offering inside it. */
+.services-content h2 {
+  margin-top: 5rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--rule-color);
+}
+
+.services-content h3 {
+  margin-top: 3.6rem;
+  margin-bottom: 1.2rem;
+}
+
+.services-content hr {
+  margin: 4.8rem 0;
+  border: 0;
+  border-top: 1px solid var(--rule-color);
+}
+
+/* Lead paragraph under the page title. */
+.services-content > p:first-of-type {
+  font-size: 2rem;
+  line-height: 3.2rem;
+}
+
+.contact-block {
+  margin: 4.8rem 0 1.6rem;
+  padding: 3.2rem 2.8rem;
+  max-width: var(--prose-measure);
+  background-color: var(--note-bg);
+  border: 1px solid var(--rule-color);
+  border-radius: 1rem;
+  text-align: center;
+}
+
+.contact-cta {
+  display: inline-block;
+  padding: 1.2rem 3.2rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 2.6rem;
+  color: #fff;
+  background-color: var(--note-border);
+  border-radius: 0.8rem;
+  transition: transform 0.12s ease-out, filter 0.12s ease-out;
+}
+
+.contact-cta:hover,
+.contact-cta:focus {
+  color: #fff;
+  text-decoration: none;
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.contact-channels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem 2.8rem;
+  justify-content: center;
+  margin: 2.4rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 1.6rem;
+}
+
+.contact-channels li {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.contact-channels i {
+  color: var(--muted-fg);
+}
+
+.contact-note {
+  margin: 2.4rem auto 0;
+  max-width: 52rem;
+  font-size: 1.5rem;
+  line-height: 2.4rem;
+  color: var(--muted-fg);
+}
+
+@media only screen and (max-width: 768px) {
+  .contact-block {
+    padding: 2.4rem 1.6rem;
+  }
+
+  .contact-cta {
+    display: block;
+    padding: 1.2rem 1.6rem;
+  }
+
+  .contact-channels {
+    gap: 1.2rem 2rem;
+  }
+}
+
+/* Services header: CTA sits on its own line below the title. */
+.services-header {
+  display: block;
+  margin-bottom: 4.8rem;
+}
+
+.services-header .title {
+  margin: 0 0 3.2rem 0;
+}
+
+.contact-cta-small {
+  padding: 0.7rem 1.8rem;
+  font-size: 1.5rem;
+  line-height: 2.2rem;
+  border-radius: 0.6rem;
+}
+
+/* Stack section: one group per line, tighter than default prose.
+   Scoped to the paragraphs following the "Stack" heading via its id, so the
+   longer "Where I help" and "How we work" entries keep normal spacing. */
+#stack ~ p:has(> strong:first-child) {
+  margin: 0 0 1rem 0;
+  line-height: 2.8rem;
+}
+
+/* The link closing the section returns to normal rhythm. */
+#stack ~ p:not(:has(> strong:first-child)) {
+  margin-top: 2.4rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .services-header {
+    gap: 1.2rem;
+  }
+
+  .contact-cta-small {
+    display: inline-block;
+    padding: 0.7rem 1.8rem;
+  }
+}
+
+/* Two-column services page: prose keeps its measure, the portrait sits in
+   its own column to the right so it never displaces a line of text.
+   The container is widened only on this page to make room. */
+.container.services {
+  max-width: 112rem;
+  flex: 1;
+}
+
+.services-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 26rem;
+  gap: 4.8rem;
+  align-items: start;
+}
+
+/* Prose keeps its comfortable measure inside its own column. */
+.services-body > .services-content {
+  max-width: var(--prose-measure);
+  min-width: 0;
+}
+
+.services-photo {
+  position: sticky;
+  top: 2rem;
+  margin: 0;
+  text-align: initial;
+}
+
+.services-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.8rem;
+}
+
+/* Below the grid breakpoint the photo moves above the copy, centred.
+   Flex + order is used rather than block, because the figure comes after
+   the prose in the DOM and would otherwise land at the bottom. */
+@media only screen and (max-width: 1000px) {
+  .container.services {
+    max-width: 90rem;
+  }
+
+  .services-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .services-content {
+    order: 2;
+  }
+
+  .services-photo {
+    order: 1;
+    position: static;
+    width: 18rem;
+    margin: 0 auto 3.2rem;
+  }
+}
